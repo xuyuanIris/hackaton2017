@@ -1,25 +1,34 @@
 import React from 'react'
 import Paper from 'material-ui/Paper';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import Alert from 'material-ui/svg-icons/alert/add-alert';
+import Setting from 'material-ui/svg-icons/action/settings-applications';
 import ActionHome from 'material-ui/svg-icons/action/home';
 import style from 'styled-components';
-import { blue500 } from 'material-ui/styles/colors';
+import { withRouter } from 'react-router'
+import { compose, withHandlers } from 'recompose'
 
-const alert = <Alert />
-const home = <ActionHome color={blue500} />
+const me = <Setting />
+const home = <ActionHome />
 const BottomPaper = style(Paper) `
     position: absolute;
     bottom: 0;
-    background-color: red;
+    width: 100%;
 `
-
-export default function Footer() {
-    return (<BottomPaper zDepth={1}>
-        <BottomNavigation>
-            <BottomNavigationItem label="1" icon={home} />
-            <BottomNavigationItem label="2" icon={alert} />
-            <BottomNavigationItem label="3" icon={alert} />
-        </BottomNavigation>
-    </BottomPaper>)
+const emhance = compose(
+    withRouter,
+    withHandlers({
+        replace: props => props.history.replace
+    })
+)
+const activeTable = {
+    '/mall/orders': 0,
+    '/mall/me': 1
 }
+const Footer = ({ replace, location: { pathname } }) => (<BottomPaper zDepth={1}>
+    <BottomNavigation selectedIndex={activeTable[pathname]}>
+        <BottomNavigationItem label="订单" icon={home} onTouchTap={() => replace('/mall/orders')} />
+        <BottomNavigationItem label="我" icon={me} onTouchTap={() => replace('/mall/me')} />
+    </BottomNavigation>
+</BottomPaper>)
+
+export default emhance(Footer)

@@ -1,7 +1,6 @@
-import { handleActions } from 'redux-actions'
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
-const reducer = handleActions({
-    xxx: () => { }
-}, {})
-
-export default reducer;
+export default combineReducers({
+    router: routerReducer
+})

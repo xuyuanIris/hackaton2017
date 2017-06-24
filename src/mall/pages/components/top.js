@@ -3,6 +3,7 @@ import { withProps } from 'recompose'
 
 export default withProps({
     titleStyle: {
-        textAlign: 'center'
-    }
+        textAlign: 'center',
+    },
+    showMenuIconButton: false
 })(AppBar)

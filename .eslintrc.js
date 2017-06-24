@@ -11,7 +11,8 @@ module.exports = {
         "linebreak-style": 0,
         "react/jsx-indent-props": 0,
         "arrow-body-style": 0,
-        "arrow-parens": 0
+        "arrow-parens": 0,
+        "react/prop-types": 0
     },
     "globals": {
         "window": false

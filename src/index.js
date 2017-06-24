@@ -25,13 +25,14 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <MuiThemeProvider>
-                <Route
-                    exact
-                    path="/"
-                    component={asyncMall}
-                />
-            </MuiThemeProvider>
+            <div>
+                <MuiThemeProvider>
+                    <Route
+                        path="/mall"
+                        component={asyncMall}
+                    />
+                </MuiThemeProvider>
+            </div>
         </ConnectedRouter>
     </Provider>,
     window.document.getElementById('root')

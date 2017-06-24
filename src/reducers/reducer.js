@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { routerReducer as router } from 'react-router-redux';
+import { assign } from 'lodash'
 
-export default combineReducers({
-    router: routerReducer
-})
+const reducers = {
+    router
+};
+export const combine = other => combineReducers(assign(reducers, other))
+export const injectReducer = store => rdsObj => store.replaceReducer(combine(rdsObj))
+export default combine(reducers);

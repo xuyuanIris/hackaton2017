@@ -8,7 +8,10 @@ module.exports = {
         'indent': [2, 4, {"SwitchCase": 1, "VariableDeclarator": 1}],
         'react/jsx-indent': 0,
         "eol-last": 0,
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "react/jsx-indent-props": 0,
+        "arrow-body-style": 0,
+        "arrow-parens": 0
     },
     "globals": {
         "window": false

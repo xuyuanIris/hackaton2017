@@ -6,7 +6,7 @@ import { injectReducerWithStore } from '../../reducers/store'
 const dynamicLoadperson = once((setComponent) => {
     require.ensure([], require => {
         setTimeout(() => {
-            const person = require('./index').default
+            const person = require('./router').default
             const personReducer = require('../reducer/index').default
             injectReducerWithStore({ person: personReducer })
             setComponent({ component: person })

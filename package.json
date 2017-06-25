@@ -16,6 +16,7 @@
     "recompose": "^0.23.5",
     "redux": "^3.7.0",
     "redux-actions": "^2.0.3",
+    "reselect": "^3.0.1",
     "styled-components": "^2.1.0"
   },
   "devDependencies": {

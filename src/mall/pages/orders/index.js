@@ -1,5 +1,5 @@
 import React from 'react'
-import Top from '../components/top'
+import Top from './../../../js/top'
 import Body from './body'
 import List from './list'
 

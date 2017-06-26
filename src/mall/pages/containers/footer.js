@@ -1,34 +1,17 @@
-import React from 'react'
-import Paper from 'material-ui/Paper';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import Setting from 'material-ui/svg-icons/action/settings-applications';
-import ActionHome from 'material-ui/svg-icons/action/home';
-import style from 'styled-components';
 import { withRouter } from 'react-router'
-import { compose, withHandlers } from 'recompose'
+import { compose, withHandlers, withProps } from 'recompose'
+import Footer from './../components/footer.pure'
 
-const me = <Setting />
-const home = <ActionHome />
-const BottomPaper = style(Paper) `
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-`
-const emhance = compose(
-    withRouter,
-    withHandlers({
-        replace: props => props.history.replace
-    })
-)
 const activeTable = {
     '/mall/orders': 0,
     '/mall/me': 1
 }
-const Footer = ({ replace, location: { pathname } }) => (<BottomPaper zDepth={1}>
-    <BottomNavigation selectedIndex={activeTable[pathname]}>
-        <BottomNavigationItem label="订单" icon={home} onTouchTap={() => replace('/mall/orders')} />
-        <BottomNavigationItem label="我" icon={me} onTouchTap={() => replace('/mall/me')} />
-    </BottomNavigation>
-</BottomPaper>)
+const emhance = compose(
+    withRouter,
+    withHandlers({
+        replace: props => path => () => props.history.replace(path)
+    }),
+    withProps(props => ({ selectedIndex: activeTable[props.location.pathname] }))
+)
 
 export default emhance(Footer)

@@ -7,6 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Top from './../../js/top'
 
-storiesOf('mall', module).add('top', () => (<MuiThemeProvider>
+storiesOf('commons', module).add('top', () => (<MuiThemeProvider>
     <Top title="头部" />
 </MuiThemeProvider>))

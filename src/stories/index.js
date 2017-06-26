@@ -5,4 +5,3 @@ import './person/search'
 
 import './commons/top'
 import './commons/loading'
-import './commons/input'

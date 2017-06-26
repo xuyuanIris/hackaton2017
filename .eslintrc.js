@@ -16,6 +16,9 @@ module.exports = {
         "no-underscore-dangle": 0
     },
     "globals": {
-        "window": false
+        "window": false,
+        "describe": false,
+        "it": false,
+        "expect": false
     }
 }

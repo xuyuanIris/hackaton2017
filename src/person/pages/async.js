@@ -11,7 +11,7 @@ const dynamicLoadperson = once((setComponent) => {
             injectReducerWithStore({ person: personReducer })
             setComponent({ component: person })
         }, 500)
-    }, 'Mall')
+    }, 'Person')
 })
 const emhance = compose(
     withState('componentContainer', 'setComponent', null),

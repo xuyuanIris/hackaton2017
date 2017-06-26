@@ -1,5 +1,7 @@
+import React from 'react'
 import style, { keyframes } from 'styled-components'
 import LdSvg from './loading.svg'
+import { CenterPaper } from './materialLoading'
 
 const spin = keyframes`
     from { transform: rotate(0deg); }
@@ -12,4 +14,6 @@ const Loading = style.img.attrs({
 }) `
      animation: ${spin} infinite 0.6s linear;
 `
-export default Loading
+export default () => (<CenterPaper zDepth={0}>
+    <Loading />
+</CenterPaper>)

@@ -3,7 +3,7 @@ import style from 'styled-components'
 import CircularProgress from 'material-ui/CircularProgress';
 import Paper from 'material-ui/Paper';
 
-const CenterPaper = style(Paper) `
+export const CenterPaper = style(Paper) `
     position: absolute;
     top: 50%;
     left: 50%;
@@ -11,6 +11,6 @@ const CenterPaper = style(Paper) `
     border-radius: 10px;
     transform: translate(-50%,-50%);
 `
-export default () => (<CenterPaper>
+export default () => (<CenterPaper zDepth={1}>
     <CircularProgress />
 </CenterPaper>)

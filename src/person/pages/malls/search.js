@@ -1,9 +1,11 @@
-import input from '../components/input';
-import { compose, withProps } from 'recompose';
+import { compose, withHandlers } from 'recompose'
+import search from '../components/search.pure';
 
-export default compose(
-    withProps({
-        fullWidth: true,
-        hintText: "Hint Text"
+const emhance = compose(
+    withHandlers({
+        onChange: () => e => {
+            console.log(e.target.value)
+        }
     })
-)(input)
+)
+export default emhance(search)

@@ -5,9 +5,11 @@ import fadeIn from './../../js/fadeIn'
 import malls from './malls/index'
 import container from './container'
 import me from './me'
+import New from './customer/new/new'
 
 export default () => (<Switch>
     <Route path="/person/malls" component={nest(container, fadeIn, malls)} />
     <Route path="/person/me" component={nest(container, fadeIn, me)} />
+    <Route path="/person/customer/new" component={nest(container, fadeIn, New)} />
     <Redirect to="/person/malls" />
 </Switch>)

@@ -11,7 +11,7 @@ import NewForm from './../../person/pages/customer/new/newForm'
 const Div = style.div`
     width: 375px;
 `
-storiesOf('person', module).add('list', () => (<MuiThemeProvider>
+storiesOf('person', module).add('NewForm', () => (<MuiThemeProvider>
     <Div>
         <NewForm />
     </Div>

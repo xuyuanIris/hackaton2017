@@ -1,6 +1,5 @@
 import React from 'react'
 import TextField from 'material-ui/TextField/TextField'
-import style from 'styled-components'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import Divider from 'material-ui/Divider';
 
@@ -27,8 +26,7 @@ const NewForm = () => (<div>
     />
     <div style={{
         display: 'flex',
-        padding: '25px 10px 5px',
-        
+        padding: '25px 10px 5px'
     }}
     >
         <span style={{ flex: 1, color: 'rgba(0, 0, 0, 0.3)' }} >

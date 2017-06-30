@@ -1,21 +1,36 @@
 import React from 'react'
 import style from 'styled-components'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const ItemWrap = style.div`
-    margin: 10px;
-    border: 1px solid black;
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    line-height: 25px;
+    font-size: 14px;    
 `
-const Name = style.span`
-    margin-right: 10px
+const Tel = style.div`
+    font-size: 12px;
+    text-align: left;
 `
-const Tel = style.span`
+const Name = style.div`
+    text-align: left;
 `
+const raisedButton = {
+    height: 36
+}
 export default () => (<ItemWrap>
-    <Name>
-        xiaomin
-    </Name>
-    <Tel>
-        13377829475
-    </Tel>
+    <div style={{
+        flex: 1,
+        textAlign: 'center'
+    }}>
+        <Name>
+            姓名：xiaomin
+        </Name>
+        <Tel>
+            电话：13377829475
+        </Tel>
+    </div>
+    <RaisedButton label="推荐" primary={true} style={raisedButton} />
 </ItemWrap>)

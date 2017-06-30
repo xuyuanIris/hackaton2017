@@ -1,6 +1,7 @@
 import React from 'react'
 import TextField from 'material-ui/TextField/TextField'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
 const styles = {
@@ -10,11 +11,16 @@ const styles = {
     radioButton: {
         float: 'left',
         marginLeft: 20,
-        width: 1
-    },
+        width: 1,
+        color: '#ccc'
+    }
 };
 const textStyle = {
     padding: '0 10px'
+}
+const raisedButton = {
+    flex: 1,
+    margin: '50px 12px'
 }
 const NewForm = () => (<div>
     <TextField
@@ -62,5 +68,13 @@ const NewForm = () => (<div>
         rowsMax={5}
         floatingLabelStyle={textStyle}
     />
+    <div style={{
+        display: 'flex',
+        textAlign: 'center'
+    }}
+    >
+    <RaisedButton label="重置" style={raisedButton} />
+    <RaisedButton label="确定" primary={true} style={raisedButton} />
+  </div>
 </div>)
 export default NewForm;

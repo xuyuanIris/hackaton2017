@@ -24,7 +24,8 @@ export default () => (<ItemWrap>
     <div style={{
         flex: 1,
         textAlign: 'center'
-    }}>
+    }}
+    >
         <Name>
             姓名：xiaomin
         </Name>

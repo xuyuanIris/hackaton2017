@@ -27,15 +27,18 @@ export const recommend = ({ customer_ids, company_id }) => () => proxyAxios.post
     .then(retCode => {
         return retCode === 0 ? 'success' : Promise.reject('fail')
     })
-const init = immutable({ list: [], checks: [] })
+const init = { list: [], checks: [] }
 export default handleActions(
     {
         [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),
         [toggle]: (state, actions) => {
             const { id } = actions.payload;
-            return includes(state.checks, id) ?
-                immutable.update(state, 'checks', without, id) :
-                immutable.update(state, 'checks', Array.prototype.concat, id)
+            const checks = state.checks
+            const retChecks = includes(checks, id) ? without(checks, id) : [...checks, id]
+            return {
+                ...state,
+                checks: retChecks
+            }
         },
         [reset]: () => init
     },

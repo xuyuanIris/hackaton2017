@@ -21,8 +21,15 @@ const add = {
 }
 const Body = style.div`
 `
+const Label = style.div `
+    padding: 5px;
+    color: #333;
+`
 const list = (p) => {
-    const { mesasge: { open, message }, onClose, cutList, onClick, checks, location: { state: { companyName } } } = p
+    const {
+        mesasge: { open, message },
+        onClose, cutList, onClick, checks, location: { state: { companyName } }
+    } = p
     return (<div>
         <Top
             title="客户列表"
@@ -58,6 +65,9 @@ const list = (p) => {
             autoHideDuration={2000}
             onRequestClose={onClose}
         />
+        <Label>
+            已选{checks.length}人
+        </Label>
         <div style={{
             display: 'flex',
             textAlign: 'center'

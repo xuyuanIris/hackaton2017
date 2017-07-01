@@ -1,7 +1,7 @@
 import { proxyAxios } from './../../reducers/store'
 
 export const doTest = () => () => {
-    proxyAxios.get('/api').then(console.log)
+    proxyAxios.get('/api')
 }
 export default function () {
     return 111

@@ -8,7 +8,7 @@ export default class ProxyAxios {
     get(...o) {
         this.before(...o)
         return axios.get(...o).then((res) => {
-            this.after(...o);
+            this.after(null, ...o);
             return res;
         }, (res) => {
             this.after(true, ...o);

@@ -1,6 +1,6 @@
 import React from 'react'
 import { partial, property, map } from 'lodash'
-import { compose, lifecycle } from 'recompose'
+import { compose, lifecycle, withHandlers } from 'recompose'
 import { createSelector } from 'reselect'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import style from 'styled-components'
 import Item from './item.customer'
 import Top from './../../../../js/top'
-import { getCustomerList } from '../../../reducer/customer/list/index'
+import { getCustomerList, recommend } from '../../../reducer/customer/list/index'
 
 const raisedButton = {
     flex: 1
@@ -20,7 +20,7 @@ const add = {
 }
 const Body = style.div`
 `
-const list = ({ cutList }) => {
+const list = ({ cutList, onClick }) => {
     return (<div>
         <Top
             title="客户列表"
@@ -54,7 +54,7 @@ const list = ({ cutList }) => {
             textAlign: 'center'
         }}
         >
-            <RaisedButton label="推荐" primary style={raisedButton} />
+            <RaisedButton label="推荐" primary onClick={onClick} style={raisedButton} />
         </div>
     </div>)
 }
@@ -62,13 +62,28 @@ const list = ({ cutList }) => {
 export default compose(
     connect(
         createSelector(
-            [property('person.customer.list.list')],
-            (cutList) => ({
-                cutList
+            [
+                property('person.customer.list.list'),
+                property('person.customer.list.checks')
+            ],
+            (cutList, checks) => ({
+                cutList, checks
             })
         ),
-        partial(bindActionCreators, { getCustomerList })
+        partial(bindActionCreators, { getCustomerList, recommend })
     ),
+    withHandlers({
+        onClick: props => () => {
+            const customerIds = props.checks
+            const { params: { companyId } } = props.match
+            if (customerIds.length !== 0) {
+                props.recommend({
+                    customer_ids: customerIds,
+                    company_id: companyId
+                })
+            }
+        }
+    }),
     lifecycle({
         componentDidMount() {
             this.props.getCustomerList()

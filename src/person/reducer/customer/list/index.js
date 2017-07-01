@@ -15,6 +15,20 @@ export const getCustomerList = () => (dispatch) => {
         .then(getList)
         .then(dispatch)
 }
+export const recommend = ({
+        customer_ids,
+        company_id
+    }) => () => {
+        proxyAxios.post(
+            '/api/customer/recommend',
+            {
+                customer_ids,
+                company_id
+            }
+        )
+            .then(property('data.data'))
+            .then(console.log)
+    }
 export default handleActions(
     {
         [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),

@@ -8,7 +8,8 @@ import TextField from 'material-ui/TextField/TextField'
 import { createSelector } from 'reselect'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { setValue, reset } from '../../../reducer/customer/new/index'
+import { withRouter } from 'react-router'
+import { setValue, reset, saveCustomer } from '../../../reducer/customer/new/index'
 
 
 const styles = {
@@ -32,7 +33,7 @@ const raisedButton = {
 const NewForm = ({
     name, gender,
     mobile_tel: mobileTel,
-    remark,
+    remark, submit,
     setValue: _setValue,
     reset: _reset
 }) => (<div>
@@ -54,7 +55,7 @@ const NewForm = ({
         >
             <span style={{ flex: 1, color: 'rgba(0, 0, 0, 0.3)' }} >
                 性别
-        </span>
+            </span>
             <RadioButtonGroup
                 name="gender"
                 valueSelected={gender}
@@ -103,7 +104,7 @@ const NewForm = ({
         }}
         >
             <RaisedButton label="重置" style={raisedButton} onClick={_reset} />
-            <RaisedButton label="确定" primary style={raisedButton} />
+            <RaisedButton label="确定" primary style={raisedButton} onClick={submit} />
         </div>
     </div>)
 
@@ -118,11 +119,20 @@ export default compose(
             }
         ),
         partial(bindActionCreators, {
-            setValue, reset
+            setValue, reset, saveCustomer
         })
     ),
+    withRouter,
     withHandlers({
-        push: props => (src) => () => props.history.push(src)
+        submit: props => () => {
+            const { name, mobile_tel: tel, gender, remark } = props;
+            props.saveCustomer({
+                name,
+                mobile_tel: tel,
+                gender,
+                remark
+            }).then(props.history.goBack)
+        }
     }),
     lifecycle({
         componentDidMount() {

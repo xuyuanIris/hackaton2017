@@ -25,19 +25,19 @@ const rightIconMenu = (
     </IconMenu>
 );
 
-const ListExampleMessages = () => (
+const ListExampleMessages = ({ src, name, remark, tel }) => (
     <div>
         <ListItem
-            leftAvatar={<Avatar src="/img/ok-128.jpg" />}
+            leftAvatar={<Avatar src={src} />}
             rightIconButton={rightIconMenu}
-            primaryText="国际装修"
+            primaryText={name}
             secondaryText={
                 <p>
                     <span style={{ color: darkBlack }}>
-                        你最好的装修公司
+                        {remark}
                     </span>
                     <br />
-                    联系电话：100-39-039584
+                    联系电话：{tel}
                 </p>
             }
             secondaryTextLines={2}

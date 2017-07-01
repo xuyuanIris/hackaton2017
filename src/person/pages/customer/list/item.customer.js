@@ -26,20 +26,17 @@ const Tel = style.div`
 const Name = style.div`
     text-align: left;
 `
-const checkbox = {
-}
 const Label = style.div`
 `
-export default () => (<ItemWrap>
+export default ({ tel, name }) => (<ItemWrap>
     <Checkbox
-        style={checkbox}
         label={
             <Label>
                 <Name>
-                    姓名：xiaomin
+                    姓名：{name}
                 </Name>
                 <Tel>
-                    电话：13377829475
+                    电话：{tel}
                 </Tel>
             </Label>
         }

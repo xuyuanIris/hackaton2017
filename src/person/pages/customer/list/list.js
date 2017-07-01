@@ -28,13 +28,14 @@ const Label = style.div`
 const list = (p) => {
     const {
         mesasge: { open, message },
+        gotoAdd,
         onClose, cutList, onClick, checks, location: { state: { companyName } }
     } = p
     return (<div>
         <Top
             title="客户列表"
             iconElementRight={
-                <ContentAdd style={add} />
+                <ContentAdd style={add} onClick={gotoAdd} />
             }
         />
         <div style={{
@@ -116,6 +117,11 @@ export default compose(
             props.setmo({
                 open: false,
                 message: ''
+            })
+        },
+        gotoAdd: props => () => {
+            props.history.push({
+                pathname: '/person/customer/new'
             })
         }
     }),

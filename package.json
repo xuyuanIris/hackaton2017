@@ -8,6 +8,7 @@
     "history": "^4.6.3",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.3",
+    "qs": "^6.5.0",
     "raw-loader": "^0.5.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

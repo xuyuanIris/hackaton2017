@@ -11,7 +11,7 @@ import List from './customer/list/list'
 export default () => (<Switch>
     <Route path="/person/malls" component={nest(container, fadeIn, malls)} />
     <Route path="/person/me" component={nest(container, fadeIn, me)} />
-    <Route path="/person/customer/list" component={nest(fadeIn, List)} />
+    <Route path="/person/customer/list/:componentId" component={nest(fadeIn, List)} />
     <Route path="/person/customer/new" component={nest(container, fadeIn, New)} />
     <Redirect to="/person/malls" />
 </Switch>)

@@ -26,7 +26,7 @@ const Man = style.span`
     display: inline-block;
     width: 12px;
     height: 12px;
-    background: url('../../../../public/img/man-icon.jpg') no-repeat;
+    background: url('/img/man-icon.jpg') no-repeat;
     background-size: 100% 100%;    
 `
 const Label = style.span`

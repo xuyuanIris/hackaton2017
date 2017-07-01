@@ -1,29 +1,27 @@
 import { createActions, handleActions } from 'redux-actions';
+import immutable from 'seamless-immutable';
+import { identity } from 'lodash'
 
 export const { doRequest, resolveRequest, rejectRequest } = createActions({
     // function form; payload creator defined inline
-    doRequest: [
-        (first) => [first],             // payload
-        (first, second) => ({ second }) // meta
-    ],
-    resolveRequest: [
-        (first) => [first],             // payload
-        (first, second) => ({ second }) // meta
-    ],
-    rejectRequest: [
-        (first) => [first],             // payload
-        (first, second) => ({ second }) // meta
-    ]
+    doRequest: identity,
+    resolveRequest: identity,
+    rejectRequest: identity
 });
 
 export default handleActions(
     {
-        [doRequest]: (state, actions) => {
-            console.log(actions)
-            return state
+        [doRequest]: (state, { payload: url }) => {
+            return immutable.setIn(state, ['requesetQueue', url], 1)
+        },
+        [resolveRequest]: (state, { payload: url }) => {
+            return immutable.without(state.requesetQueue, url)
+        },
+        [rejectRequest]: (state, { payload: url }) => {
+            return immutable.without(state.requesetQueue, url)
         }
     },
     {
-        requesetQueue: {}
+        requesetQueue: immutable({})
     }
 )

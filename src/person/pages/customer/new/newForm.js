@@ -80,7 +80,7 @@ const NewForm = () => (<div>
     }}
     >
     <RaisedButton label="重置" style={raisedButton} />
-    <RaisedButton label="确定" primary={true} style={raisedButton} />
+    <RaisedButton label="确定" primary style={raisedButton} />
   </div>
 </div>)
 export default NewForm;

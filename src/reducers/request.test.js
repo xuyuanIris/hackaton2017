@@ -1,5 +1,5 @@
-import reducer, { doRequest, resolveRequest } from './request'
 import { expect } from 'chai'
+import reducer, { doRequest, resolveRequest } from './request'
 
 describe('request', () => {
     it('doRequest', () => {

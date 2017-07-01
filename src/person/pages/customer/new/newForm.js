@@ -79,8 +79,8 @@ const NewForm = () => (<div>
         textAlign: 'center'
     }}
     >
-    <RaisedButton label="重置" style={raisedButton} />
-    <RaisedButton label="确定" primary style={raisedButton} />
-  </div>
+        <RaisedButton label="重置" style={raisedButton} />
+        <RaisedButton label="确定" primary style={raisedButton} />
+    </div>
 </div>)
 export default NewForm;

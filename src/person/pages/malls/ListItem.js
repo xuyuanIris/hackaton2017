@@ -30,11 +30,14 @@ const ListExampleMessages = () => (
         <ListItem
             leftAvatar={<Avatar src="/img/ok-128.jpg" />}
             rightIconButton={rightIconMenu}
-            primaryText="Brendan Lim"
+            primaryText="国际装修"
             secondaryText={
                 <p>
-                    <span style={{ color: darkBlack }}>Brunch this weekend?</span><br />
-                    I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+                    <span style={{ color: darkBlack }}>
+                        你最好的装修公司
+                    </span>
+                    <br />
+                    联系电话：100-39-039584
                 </p>
             }
             secondaryTextLines={2}

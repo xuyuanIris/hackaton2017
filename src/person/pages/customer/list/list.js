@@ -5,7 +5,6 @@ import { createSelector } from 'reselect'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import style from 'styled-components'
 import Item from './item.customer'
@@ -42,6 +41,7 @@ const list = ({ cutList }) => {
             {
                 map(cutList, ({ id, mobile_tel: tel, remark, gender, name }) => (<Item
                     tel={tel}
+                    id={id}
                     key={id}
                     name={name}
                     remark={remark}

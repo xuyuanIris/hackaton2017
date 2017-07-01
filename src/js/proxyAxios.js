@@ -11,7 +11,7 @@ export default class ProxyAxios {
             this.after(...o);
             return res;
         }, (res) => {
-            this.after(...o);
+            this.after(true, ...o);
             return Promise.reject(res);
         })
     }

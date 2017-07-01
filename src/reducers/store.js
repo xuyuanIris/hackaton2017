@@ -4,6 +4,7 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import reducer, { injectReducer } from './reducer'
 import ProxyAxios from './../js/proxyAxios'
+import { doRequest, resolveRequest, rejectRequest } from './request'
 
 export const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -12,12 +13,13 @@ const store = createStore(
     reducer,
     composeEnhancers(applyMiddleware(thunk, middleware))
 )
+
 export const proxyAxios = new ProxyAxios({
     before(...o) {
-        console.log(...o)
+        store.dispatch(doRequest(...o))
     },
-    after(...o) {
-        console.log(...o)
+    after(error, ...o) {
+        store.dispatch((error ? resolveRequest : rejectRequest)(...o))
     }
 })
 export const injectReducerWithStore = injectReducer(store)

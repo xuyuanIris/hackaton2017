@@ -1,10 +1,13 @@
 import { handleActions, createActions } from 'redux-actions'
-import { identity, property } from 'lodash'
+import { identity, property, includes, without } from 'lodash'
 import immutable from 'seamless-immutable'
 import { proxyAxios } from '../../../../reducers/store'
 
-export const { customer: { getList } } = createActions({
-    'customer/getList': identity
+export const { customer: { getList, toggle } } = createActions({
+    customer: {
+        getList: identity,
+        toggle: identity
+    }
 })
 export const getCustomerList = () => (dispatch) => {
     proxyAxios.get('/api/customer/list')
@@ -14,7 +17,13 @@ export const getCustomerList = () => (dispatch) => {
 }
 export default handleActions(
     {
-        [getList]: (state, actions) => immutable.set(state, 'list', actions.payload)
+        [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),
+        [toggle]: (state, actions) => {
+            const { id } = actions.payload;
+            return includes(state.checks, id) ?
+                immutable.update(state, 'checks', without, id) :
+                immutable.update(state, 'checks', Array.prototype.concat, id)
+        }
     },
-    immutable({ list: [] })
+    immutable({ list: [], checks: [] })
 )

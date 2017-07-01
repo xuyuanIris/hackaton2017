@@ -1,5 +1,5 @@
 import React from 'react'
-import { partial, property, map } from 'lodash'
+import { partial, property, map, includes } from 'lodash'
 import { compose, lifecycle, withHandlers } from 'recompose'
 import { createSelector } from 'reselect'
 import { bindActionCreators } from 'redux'
@@ -9,7 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import style from 'styled-components'
 import Item from './item.customer'
 import Top from './../../../../js/top'
-import { getCustomerList, recommend } from '../../../reducer/customer/list/index'
+import { getCustomerList, recommend, reset } from '../../../reducer/customer/list/index'
 
 const raisedButton = {
     flex: 1
@@ -20,7 +20,8 @@ const add = {
 }
 const Body = style.div`
 `
-const list = ({ cutList, onClick }) => {
+const list = (p) => {
+    const { cutList, onClick, checks, location: { state: { companyName } } } = p
     return (<div>
         <Top
             title="客户列表"
@@ -35,13 +36,14 @@ const list = ({ cutList, onClick }) => {
 
         }}
         >
-            深圳市铂丽装饰设计工程有限公司
+            {companyName}
     </div>
         <Body>
             {
                 map(cutList, ({ id, mobile_tel: tel, remark, gender, name }) => (<Item
                     tel={tel}
                     id={id}
+                    checked={includes(checks, id)}
                     key={id}
                     name={name}
                     remark={remark}
@@ -70,7 +72,7 @@ export default compose(
                 cutList, checks
             })
         ),
-        partial(bindActionCreators, { getCustomerList, recommend })
+        partial(bindActionCreators, { getCustomerList, recommend, reset })
     ),
     withHandlers({
         onClick: props => () => {
@@ -86,6 +88,7 @@ export default compose(
     }),
     lifecycle({
         componentDidMount() {
+            this.props.reset()
             this.props.getCustomerList()
         }
     })

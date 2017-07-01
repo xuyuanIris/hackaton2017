@@ -30,7 +30,10 @@ const malls = ({ list, push }) => (<div>
                 src={avatar}
                 name={name}
                 remark={remark}
-                onClick={push(`/person/customer/list/${id}`)}
+                onClick={push({
+                    pathname: `/person/customer/list/${id}`,
+                    state: { companyName: name }
+                })}
                 tel={tel}
             />))
         }

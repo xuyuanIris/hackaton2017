@@ -3,10 +3,11 @@ import { identity, property, includes, without } from 'lodash'
 import immutable from 'seamless-immutable'
 import { proxyAxios } from '../../../../reducers/store'
 
-export const { customer: { getList, toggle } } = createActions({
+export const { customer: { getList, toggle, reset } } = createActions({
     customer: {
         getList: identity,
-        toggle: identity
+        toggle: identity,
+        reset: identity
     }
 })
 export const getCustomerList = () => (dispatch) => {
@@ -15,20 +16,18 @@ export const getCustomerList = () => (dispatch) => {
         .then(getList)
         .then(dispatch)
 }
-export const recommend = ({
-        customer_ids,
-        company_id
-    }) => () => {
-        proxyAxios.post(
-            '/api/customer/recommend',
-            {
-                customer_ids,
-                company_id
-            }
-        )
-            .then(property('data.data'))
-            .then(console.log)
-    }
+export const recommend = ({ customer_ids, company_id }) => () => {
+    proxyAxios.post(
+        '/api/customer/recommend',
+        {
+            customer_ids,
+            company_id
+        }
+    )
+        .then(property('data.data'))
+        .then(console.log)
+}
+const init = immutable({ list: [], checks: [] })
 export default handleActions(
     {
         [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),
@@ -37,7 +36,8 @@ export default handleActions(
             return includes(state.checks, id) ?
                 immutable.update(state, 'checks', without, id) :
                 immutable.update(state, 'checks', Array.prototype.concat, id)
-        }
+        },
+        [reset]: () => init
     },
-    immutable({ list: [], checks: [] })
+    init
 )

@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 const ItemWrap = style.div`
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.8);
     padding: 10px 20px;
     line-height: 25px;
     font-size: 14px;    
@@ -24,7 +24,8 @@ export default () => (<ItemWrap>
     <div style={{
         flex: 1,
         textAlign: 'center'
-    }}>
+    }}
+    >
         <Name>
             姓名：xiaomin
         </Name>

@@ -29,6 +29,8 @@ const NewForm = () => (<div>
         floatingLabelText="姓名"
         fullWidth
         floatingLabelStyle={textStyle}
+        inputStyle={textStyle}
+        hintStyle={textStyle}
     />
     <div style={{
         display: 'flex',
@@ -58,6 +60,8 @@ const NewForm = () => (<div>
         floatingLabelText="电话号码"
         fullWidth
         floatingLabelStyle={textStyle}
+        inputStyle={textStyle}
+        hintStyle={textStyle}
     />
     <TextField
         name="tel"
@@ -67,6 +71,8 @@ const NewForm = () => (<div>
         multiLine
         rowsMax={5}
         floatingLabelStyle={textStyle}
+        inputStyle={textStyle}
+        hintStyle={textStyle}
     />
     <div style={{
         display: 'flex',

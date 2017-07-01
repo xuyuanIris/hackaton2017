@@ -34,8 +34,9 @@ const Name = style.div`
 `
 const Label = style.div`
 `
-const item = ({ tel, name, onClick }) => (<ItemWrap onClick={onClick}>
+const item = ({ tel, name, onClick, checked }) => (<ItemWrap onClick={onClick}>
     <Checkbox
+        checked={checked}
         label={
             <Label>
                 <Name>

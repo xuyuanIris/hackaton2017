@@ -1,6 +1,12 @@
 import React from 'react'
 import style from 'styled-components'
 import Checkbox from 'material-ui/Checkbox';
+import { compose, withHandlers } from 'recompose'
+import { bindActionCreators } from 'redux'
+import { partial } from 'lodash'
+import { createSelector } from 'reselect'
+import { connect } from 'react-redux'
+import { toggle } from '../../../reducer/customer/list/index'
 
 const ItemWrap = style.div`
     display: flex;
@@ -28,7 +34,7 @@ const Name = style.div`
 `
 const Label = style.div`
 `
-export default ({ tel, name }) => (<ItemWrap>
+const item = ({ tel, name, onClick }) => (<ItemWrap onClick={onClick}>
     <Checkbox
         label={
             <Label>
@@ -42,3 +48,22 @@ export default ({ tel, name }) => (<ItemWrap>
         }
     />
 </ItemWrap>)
+export default compose(
+    connect(
+        createSelector(
+            [],
+            () => {
+                return {}
+            }
+        ),
+        partial(bindActionCreators, {
+            toggle
+        })
+    ),
+    withHandlers({
+        onClick: props => () => {
+            const { id } = props
+            props.toggle({ id })
+        }
+    })
+)(item)

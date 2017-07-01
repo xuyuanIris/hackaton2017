@@ -1,9 +1,13 @@
-describe('my beverage', () => {
-    it('is delicious', () => {
-        expect(1 + 2).toBe(3);
-    });
+import reducer, { doRequest, resolveRequest } from './request'
+import { expect } from 'chai'
 
-    it('is not sour', () => {
-        expect(1 + 2).toBe(3);
+describe('request', () => {
+    it('doRequest', () => {
+        const state = reducer({ requesetQueue: {} }, doRequest('/qqq'))
+        expect(state.requesetQueue).to.has.key('/qqq')
+    });
+    it('resolveRequest', () => {
+        const state = reducer({ requesetQueue: { '/qqq': 1, '/www': 1 } }, resolveRequest('/qqq'))
+        expect(state).not.has.key('/qqq')
     });
 });

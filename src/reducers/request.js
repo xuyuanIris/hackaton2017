@@ -3,7 +3,6 @@ import immutable from 'seamless-immutable';
 import { identity } from 'lodash'
 
 export const { doRequest, resolveRequest, rejectRequest } = createActions({
-    // function form; payload creator defined inline
     doRequest: identity,
     resolveRequest: identity,
     rejectRequest: identity
@@ -15,13 +14,11 @@ export default handleActions(
             return immutable.setIn(state, ['requesetQueue', url], 1)
         },
         [resolveRequest]: (state, { payload: url }) => {
-            return immutable.without(state.requesetQueue, url)
+            return immutable.update(state, 'requesetQueue', immutable.without, url)
         },
         [rejectRequest]: (state, { payload: url }) => {
             return immutable.without(state.requesetQueue, url)
         }
     },
-    {
-        requesetQueue: immutable({})
-    }
+    immutable({ requesetQueue: {} })
 )

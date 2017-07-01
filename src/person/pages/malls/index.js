@@ -25,7 +25,7 @@ const malls = ({ list, push }) => (<div>
     <Search />
     <List>
         {
-            map(list, ({ id, avatar, name, remark, tel }) => (<ListItem
+            map(list, ({ id, avatar, name, remark, tel, amount }) => (<ListItem
                 key={id}
                 src={avatar}
                 name={name}
@@ -35,6 +35,7 @@ const malls = ({ list, push }) => (<div>
                     state: { companyName: name }
                 })}
                 tel={tel}
+                amount={amount}
             />))
         }
     </List>

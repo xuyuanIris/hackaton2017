@@ -3,8 +3,9 @@ import { identity, property } from 'lodash'
 import immutable from 'seamless-immutable'
 import { proxyAxios } from '../../../reducers/store'
 
-export const { getList } = createActions({
-    getList: identity
+export const { getList, onChange } = createActions({
+    getList: identity,
+    onChange: identity
 })
 export const getCompanyList = () => (dispatch) => {
     proxyAxios.get('/api/company/list')
@@ -14,7 +15,8 @@ export const getCompanyList = () => (dispatch) => {
 }
 export default handleActions(
     {
-        [getList]: (state, actions) => immutable.set(state, 'list', actions.payload)
+        [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),
+        [onChange]: (state, { payload }) => state.set('searchKey', payload)
     },
-    immutable({ list: [] })
+    immutable({ list: [], searchKey: '' })
 )

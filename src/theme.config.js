@@ -1,5 +1,5 @@
 import {
-    cyan500, cyan700, blueA200, blueA400,
+    cyan500, blueA200, blueA400,
     pinkA200,
     grey100, grey300, grey400, grey500,
     white, darkBlack, fullBlack,

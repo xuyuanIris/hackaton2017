@@ -21,7 +21,7 @@ const add = {
 }
 const Body = style.div`
 `
-const Label = style.div `
+const Label = style.div`
     padding: 5px;
     color: #333;
 `
@@ -122,7 +122,8 @@ export default compose(
     lifecycle({
         componentDidMount() {
             this.props.reset()
-            this.props.getCustomerList()
+            const { params: { companyId } } = this.props.match
+            this.props.getCustomerList({ companyId })
         }
     })
 )(list)

@@ -10,8 +10,8 @@ export const { customer: { getList, toggle, reset } } = createActions({
         reset: identity
     }
 })
-export const getCustomerList = () => (dispatch) => {
-    proxyAxios.get('/api/customer/list')
+export const getCustomerList = ({ companyId }) => (dispatch) => {
+    proxyAxios.get('/api/customer/list', { params: { company_id: companyId } })
         .then(property('data.data'))
         .then(getList)
         .then(dispatch)

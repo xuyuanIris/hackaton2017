@@ -16,17 +16,17 @@ export const getCustomerList = () => (dispatch) => {
         .then(getList)
         .then(dispatch)
 }
-export const recommend = ({ customer_ids, company_id }) => () => {
-    proxyAxios.post(
-        '/api/customer/recommend',
-        {
-            customer_ids,
-            company_id
-        }
-    )
-        .then(property('data.data'))
-        .then(console.log)
-}
+export const recommend = ({ customer_ids, company_id }) => () => proxyAxios.post(
+    '/api/customer/recommend',
+    {
+        customer_ids,
+        company_id
+    }
+)
+    .then(property('data.retCode'))
+    .then(retCode => {
+        return retCode === 0 ? 'success' : Promise.reject('fail')
+    })
 const init = immutable({ list: [], checks: [] })
 export default handleActions(
     {

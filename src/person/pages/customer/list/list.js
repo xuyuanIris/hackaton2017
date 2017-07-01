@@ -1,7 +1,8 @@
 import React from 'react'
 import { partial, property, map, includes } from 'lodash'
-import { compose, lifecycle, withHandlers } from 'recompose'
+import { compose, lifecycle, withHandlers, withState } from 'recompose'
 import { createSelector } from 'reselect'
+import Snackbar from 'material-ui/Snackbar';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -21,7 +22,7 @@ const add = {
 const Body = style.div`
 `
 const list = (p) => {
-    const { cutList, onClick, checks, location: { state: { companyName } } } = p
+    const { mesasge: { open, message }, onClose, cutList, onClick, checks, location: { state: { companyName } } } = p
     return (<div>
         <Top
             title="客户列表"
@@ -37,7 +38,7 @@ const list = (p) => {
         }}
         >
             {companyName}
-    </div>
+        </div>
         <Body>
             {
                 map(cutList, ({ id, mobile_tel: tel, remark, gender, name }) => (<Item
@@ -51,6 +52,12 @@ const list = (p) => {
                 />))
             }
         </Body>
+        <Snackbar
+            open={open}
+            message={message}
+            autoHideDuration={2000}
+            onRequestClose={onClose}
+        />
         <div style={{
             display: 'flex',
             textAlign: 'center'
@@ -74,6 +81,10 @@ export default compose(
         ),
         partial(bindActionCreators, { getCustomerList, recommend, reset })
     ),
+    withState('mesasge', 'setmo', {
+        open: false,
+        message: ''
+    }),
     withHandlers({
         onClick: props => () => {
             const customerIds = props.checks
@@ -82,8 +93,20 @@ export default compose(
                 props.recommend({
                     customer_ids: customerIds,
                     company_id: companyId
+                }).then(() => {
+                    props.setmo({
+                        open: true,
+                        message: '添加成功'
+                    })
                 })
+                setTimeout(() => props.history.goBack(), 2000);
             }
+        },
+        onClose: props => () => {
+            props.setmo({
+                open: false,
+                message: ''
+            })
         }
     }),
     lifecycle({

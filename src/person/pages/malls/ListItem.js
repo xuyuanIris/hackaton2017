@@ -4,8 +4,9 @@ import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
 import { darkBlack } from 'material-ui/styles/colors';
 
-const ListExampleMessages = ({ src, name, remark, tel }) => (
-    <div>
+const ListExampleMessages = (props) => {
+    const { src, name, remark, tel, onClick } = props
+    return (<div onClick={onClick}>
         <ListItem
             leftAvatar={<Avatar src={src} />}
             primaryText={name}
@@ -21,7 +22,7 @@ const ListExampleMessages = ({ src, name, remark, tel }) => (
             secondaryTextLines={2}
         />
         <Divider inset />
-    </div>
-);
+    </div>)
+};
 
 export default ListExampleMessages;

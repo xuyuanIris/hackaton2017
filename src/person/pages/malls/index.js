@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose, lifecycle } from 'recompose'
+import { compose, lifecycle, withHandlers } from 'recompose'
 import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -20,7 +20,7 @@ export const filterBySearchKey = (list, searchKey) => {
             }).value()
     )
 }
-const malls = ({ list }) => (<div>
+const malls = ({ list, push }) => (<div>
     <Top title="商城" />
     <Search />
     <List>
@@ -30,6 +30,7 @@ const malls = ({ list }) => (<div>
                 src={avatar}
                 name={name}
                 remark={remark}
+                onClick={push(`/person/customer/list/${id}`)}
                 tel={tel}
             />))
         }
@@ -53,6 +54,9 @@ export default compose(
             getCompanyList
         })
     ),
+    withHandlers({
+        push: props => (src) => () => props.history.push(src)
+    }),
     lifecycle({
         componentDidMount() {
             this.props.getCompanyList()

@@ -8,7 +8,7 @@ import { List } from 'material-ui/List';
 import Top from './../../../js/top'
 import Search from './search'
 import ListItem from './ListItem'
-import { doRequest } from './../../../reducers/request'
+import { doTest } from '../../reducer/index'
 
 const malls = () => (<div>
     <Top title="商城" />
@@ -30,12 +30,12 @@ export default compose(
             })
         ),
         partial(bindActionCreators, {
-            doRequest
+            doTest
         })
     ),
     lifecycle({
         componentDidMount() {
-            this.props.doRequest(1, 2, 3)
+            this.props.doTest(1, 2, 3)
         }
     })
 )(malls)

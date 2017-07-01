@@ -3,13 +3,23 @@ import { compose, lifecycle } from 'recompose'
 import { createSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { partial, property, map } from 'lodash'
+import { chain, filter, partial, property, map, includes } from 'lodash'
 import { List } from 'material-ui/List';
 import Top from './../../../js/top'
 import Search from './search'
 import ListItem from './ListItem'
 import { getCompanyList } from '../../reducer/mall/index'
 
+export const filterBySearchKey = (list, searchKey) => {
+    return filter(
+        list,
+        item => chain(item)
+            .pick('name', 'remark', 'tel')
+            .some(value => {
+                return includes(value, searchKey)
+            }).value()
+    )
+}
 const malls = ({ list }) => (<div>
     <Top title="商城" />
     <Search />
@@ -30,11 +40,14 @@ export default compose(
     connect(
         createSelector(
             [
-                property('person.malls.list')
+                property('person.malls.list'),
+                property('person.malls.searchKey')
             ],
-            (list) => ({
-                list
-            })
+            (list, searchKey) => {
+                return {
+                    list: filterBySearchKey(list, searchKey)
+                }
+            }
         ),
         partial(bindActionCreators, {
             getCompanyList

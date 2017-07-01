@@ -5,7 +5,7 @@ import List from './list'
 
 const orders = () => (<div>
     <Top title="订单" />
-    <Body>
+    <Body style={{ backgroundColor: '#f2f4f6' }}>
         <List />
     </Body>
 </div>)

@@ -6,7 +6,6 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 
 const add = {
     color: '#fff',
-    height: 52,
     padding: '0 10px'
 }
 const list = () => (<div>
@@ -19,7 +18,7 @@ const list = () => (<div>
     <div style={{
         padding: '10px 15px',
         lineHeight: '25px',
-        borderBottom: '1px solid #ccc'
+        borderBottom: '1px solid rgba(238, 238, 238, 0.8)'
 
     }}
     >

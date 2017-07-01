@@ -16,7 +16,7 @@ export const getCompanyList = () => (dispatch) => {
 export default handleActions(
     {
         [getList]: (state, actions) => immutable.set(state, 'list', actions.payload),
-        [onChange]: (state, { payload }) => state.set('searchKey', payload)
+        [onChange]: (state, { payload }) => immutable.set(state, 'searchKey', payload)
     },
     immutable({ list: [], searchKey: '' })
 )

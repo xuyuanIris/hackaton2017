@@ -13,7 +13,8 @@ module.exports = {
         "arrow-body-style": 0,
         "arrow-parens": 0,
         "react/prop-types": 0,
-        "no-underscore-dangle": 0
+        "no-underscore-dangle": 0,
+        "jsx-a11y/no-static-element-interactions": 0
     },
     "globals": {
         "window": false,

@@ -1,9 +1,8 @@
 import React from 'react';
 import { ListItem } from 'material-ui/List';
-import AddBox from 'material-ui/svg-icons/content/add';
 import Divider from 'material-ui/Divider';
 import Avatar from 'material-ui/Avatar';
-import { grey500, redA700, blue700, green700 } from 'material-ui/styles/colors';
+import { grey500, redA700, blue700 } from 'material-ui/styles/colors';
 
 const ListExampleMessages = (props) => {
     const { src, name, remark, amount, commission, onClick } = props

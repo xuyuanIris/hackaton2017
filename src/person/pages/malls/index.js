@@ -14,7 +14,7 @@ export const filterBySearchKey = (list, searchKey) => {
     return filter(
         list,
         item => chain(item)
-            .pick('name', 'remark', 'tel')
+            .pick('name', 'remark', 'amount')
             .some(value => {
                 return includes(value, searchKey)
             }).value()

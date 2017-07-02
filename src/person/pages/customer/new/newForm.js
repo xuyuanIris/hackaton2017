@@ -87,7 +87,7 @@ const NewForm = ({
         />
         <TextField
             name="remark"
-            hintText="请输入客户装修偏好和其他基本情况"
+            hintText="请输入客户的资金需求及能体现客户还款能力的信息~"
             floatingLabelText="描述说明"
             value={remark}
             onChange={(e) => _setValue('remark', e.target.value)}

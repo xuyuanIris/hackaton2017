@@ -15,7 +15,7 @@ const BottomPaper = style(Paper) `
 `
 const Footer = ({ selectedIndex, replace }) => (<BottomPaper zDepth={1}>
     <BottomNavigation selectedIndex={selectedIndex}>
-        <BottomNavigationItem label="信用贷" icon={home} onTouchTap={replace('/person/malls')} />
+        <BottomNavigationItem label="掘金大厅" icon={home} onTouchTap={replace('/person/malls')} />
         <BottomNavigationItem label="客户" icon={home} />
         <BottomNavigationItem label="我" icon={me} />
     </BottomNavigation>

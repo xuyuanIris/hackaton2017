@@ -107,7 +107,7 @@ export default compose(
                 }).then(() => {
                     props.setmo({
                         open: true,
-                        message: '添加成功'
+                        message: '恭喜您！客户推荐成功！系统已将确认短信发送给客户~'
                     })
                 })
                 setTimeout(() => props.history.goBack(), 2000);

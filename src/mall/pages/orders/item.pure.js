@@ -55,5 +55,5 @@ export default ({ name }) => (<ItemWrap>
     </div>
     <Remark>
         客户刚买房，计划7月份就装修，喜欢中式风格，意向价位10w内。
-    </Remark>    
+    </Remark>
 </ItemWrap>)

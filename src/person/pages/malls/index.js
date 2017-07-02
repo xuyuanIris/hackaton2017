@@ -21,7 +21,7 @@ export const filterBySearchKey = (list, searchKey) => {
     )
 }
 const malls = ({ list, push }) => (<div>
-    <Top title="商城" />
+    <Top title="掘金大厅" />
     <Search />
     <List>
         {

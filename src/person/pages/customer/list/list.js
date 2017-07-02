@@ -33,7 +33,7 @@ const list = (p) => {
     } = p
     return (<div>
         <Top
-            title="客户列表"
+            title="推荐客户"
             iconElementRight={
                 <ContentAdd style={add} onClick={gotoAdd} />
             }

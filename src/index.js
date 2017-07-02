@@ -12,12 +12,13 @@ import registerServiceWorker from './registerServiceWorker';
 import store, { history } from './reducers/store'
 import './index.css';
 import theme from './theme.config'
+import Commons from './commons'
 
 const muitheme = getMuiTheme(theme)
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <div>
+            <Commons>
                 <MuiThemeProvider muiTheme={muitheme}>
                     <Route
                         path="/mall"
@@ -30,7 +31,7 @@ ReactDOM.render(
                         component={AsyncPerson}
                     />
                 </MuiThemeProvider>
-            </div>
+            </Commons>
         </ConnectedRouter>
     </Provider>,
     window.document.getElementById('root')

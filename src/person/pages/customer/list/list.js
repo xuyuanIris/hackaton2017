@@ -120,8 +120,9 @@ export default compose(
             })
         },
         gotoAdd: props => () => {
+            const { params: { companyId } } = props.match
             props.history.push({
-                pathname: '/person/customer/new'
+                pathname: `/person/customer/new/${companyId}`
             })
         }
     }),

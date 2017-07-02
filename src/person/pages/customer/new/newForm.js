@@ -9,8 +9,8 @@ import { createSelector } from 'reselect'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
-import { setValue, reset, saveCustomer } from '../../../reducer/customer/new/index'
-
+import { setValue, reset } from '../../../reducer/customer/new/index'
+import { recommend } from '../../../reducer/customer/list/index'
 
 const styles = {
     block: {
@@ -119,19 +119,23 @@ export default compose(
             }
         ),
         partial(bindActionCreators, {
-            setValue, reset, saveCustomer
+            setValue, reset, recommend
         })
     ),
     withRouter,
     withHandlers({
         submit: props => () => {
             const { name, mobile_tel: tel, gender, remark } = props;
-            props.saveCustomer({
+            const { params: { companyId } } = props.match
+            props.recommend({
                 name,
-                mobile_tel: tel,
+                tel,
                 gender,
-                remark
-            }).then(props.history.goBack)
+                remark,
+                company_id: companyId
+            }).then(() => {
+                props.history.push('/person/malls')
+            })
         }
     }),
     lifecycle({

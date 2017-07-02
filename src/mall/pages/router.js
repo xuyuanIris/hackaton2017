@@ -12,5 +12,5 @@ export default () => (<Switch>
     <Route path="/mall/orders/:companyId" component={nest(container, withFadeIn(orders))} />
     <Route path="/mall/me" component={nest(container, withFadeIn(me))} />
     <Route path="/mall/order/:id" component={nest(fadeIn, detailOrder)} />
-    <Redirect to="/mall/orders" />
+    <Redirect to="/mall/orders/30" />
 </Switch>)

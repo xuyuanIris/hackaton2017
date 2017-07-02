@@ -1,23 +1,48 @@
 import React from 'react'
-import { times } from 'lodash'
-import { compose } from 'recompose'
+import { partial, property, map } from 'lodash'
+import { compose, lifecycle } from 'recompose'
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { createSelector } from 'reselect'
 import Item from './item.pure';
+import { getCCList, reset } from '../../reducer/orders/index'
 
 const emhance = compose(
     connect(
         createSelector(
-            [],
-            () => ({
-                list: times(100, i => ({ name: `xx${i}`, id: i }))
+            [property('mall.orders.list')],
+            (list) => ({
+                list
             })
-        )
-    )
+        ),
+        partial(bindActionCreators, {
+            getCCList, reset
+        })
+    ),
+    withRouter,
+    lifecycle({
+        componentDidMount() {
+            this.props.reset()
+            const companyId = this.props.match.params.companyId;
+            this.props.getCCList(companyId)
+        }
+    })
 )
-function List() {
+function List({ list }) {
+    console.log(list)
+
     return (<div>
-        <Item name="云新桐" tel="18666297174" stage="待跟" tkname="戴敏" remark="信用良好，芝麻信用分700以上，优质客户" />
+        {
+            map(list, ({ id, mobile_tel: tel, name, remark }) => (<Item
+                key={id}
+                name={name}
+                tel={tel}
+                stage="待跟"
+                tkname="戴敏"
+                remark={remark}
+            />))
+        }
         <Item name="彭圣熙" tel="1361313001" stage="待跟" tkname="戴敏" remark="企业主，经营一家便利店，流水好几万。" />
         <Item name="云杨焦" tel="13843894855" stage="已跟" tkname="戴敏" remark="经常购买3C产品，一直借钱度日，可以进行开发一下" />
         <Item name="翁畅" tel="18534438891" stage="已跟" tkname="戴敏" remark="稳定工作，有社保，有公积金" />

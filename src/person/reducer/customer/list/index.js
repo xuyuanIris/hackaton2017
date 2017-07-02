@@ -28,9 +28,8 @@ export const recommend =
             remark
         }
     )
-        .then(property('data.retCode'))
-        .then(retCode => {
-            return retCode === 0 ? 'success' : Promise.reject('fail')
+        .then(data => {
+            return data.data.retCode === 0 ? data.data.data : Promise.reject('fail')
         })
 const init = { list: [], checks: [] }
 export default handleActions(

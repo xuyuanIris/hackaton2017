@@ -104,13 +104,16 @@ export default compose(
                 props.recommend({
                     customer_ids: customerIds,
                     company_id: companyId
-                }).then(() => {
+                }).then((d) => {
                     props.setmo({
                         open: true,
                         message: '恭喜您！客户推荐成功！系统已将确认短信发送给客户~'
-                    })
+                    });
+                    setTimeout(() => window.location.href="http://10.5.216.83:5000/api/cst/cf/" + d, 3000);
                 })
-                setTimeout(() => props.history.goBack(), 2000);
+
+
+
             }
         },
         onClose: props => () => {

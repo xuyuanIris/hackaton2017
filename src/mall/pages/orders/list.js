@@ -15,9 +15,11 @@ const emhance = compose(
         )
     )
 )
-function List({ list }) {
+function List() {
     return (<div>
-        {map(list, ({ id, name }) => <Item key={id} name={name} />)}
+        <Item name="张俊" tel="18666297174" stage="待跟" tkname="戴敏" remark="本市有房，还款能力强，可以作为优质客户。" />
+        <Item name="张俊" tel="18666297174" stage="待跟" tkname="戴敏" remark="本市有房，还款能力强，可以作为优质客户。" />
+        <Item name="张俊" tel="18666297174" stage="待跟" tkname="戴敏" remark="本市有房，还款能力强，可以作为优质客户。" />
     </div>)
 }
 export default emhance(List)

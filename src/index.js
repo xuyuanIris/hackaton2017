@@ -19,14 +19,12 @@ const muitheme = getMuiTheme(theme)
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <Commons>
-                <MuiThemeProvider muiTheme={muitheme}>
+            <MuiThemeProvider muiTheme={muitheme}>
+                <Commons>
                     <Route
                         path="/mall"
                         component={AsyncMall}
                     />
-                </MuiThemeProvider>
-                <MuiThemeProvider muiTheme={muitheme}>
                     <Route
                         path="/person"
                         component={AsyncPerson}

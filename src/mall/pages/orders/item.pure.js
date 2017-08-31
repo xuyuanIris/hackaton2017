@@ -40,20 +40,20 @@ const Label = style.span`
     padding: 0 3px;
     border-radius: 2px;
 `
-export default ({ name }) => (<ItemWrap>
+export default ({ name, tel, stage, tkname, remark }) => (<ItemWrap>
     <div style={{ padding: '15px', borderBottom: '1px solid rgba(238, 238, 238, 0.5)', }}>
         <CstInfo>
             <Man />
             <span>{name}</span>
-            <span>13565656565</span>
-            <Label>待跟</Label>
+            <span>{tel}</span>
+            <Label>{stage}</Label>
         </CstInfo>
         <div>
             <span style={{ color: '#666' }} >推客：</span>
-            <span style={{ color: '#2ca6e0' }} >戴敏</span>
+            <span style={{ color: '#2ca6e0' }} >{tkname}</span>
         </div>
     </div>
     <Remark>
-        客户刚买房，计划7月份就装修，喜欢中式风格，意向价位10w内。
-    </Remark>    
+        {remark}
+    </Remark>
 </ItemWrap>)

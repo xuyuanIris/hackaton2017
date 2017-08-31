@@ -1,13 +1,13 @@
 import React from 'react'
 import Paper from 'material-ui/Paper';
 import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import ActionHome from 'material-ui/svg-icons/action/home';
 import Cst from 'material-ui/svg-icons/social/people';
 import Found from 'material-ui/svg-icons/action/find-in-page';
+import Me from 'material-ui/svg-icons/social/person';
 import style from 'styled-components';
 import { compose, defaultProps, onlyUpdateForKeys } from 'recompose'
 
-const home = <ActionHome />
+const home = <Me />
 const cst1 = <Cst />
 const found = <Found />
 const BottomPaper = style(Paper) `

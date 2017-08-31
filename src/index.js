@@ -8,6 +8,7 @@ import { ConnectedRouter } from 'react-router-redux';
 import './polyfill'
 import AsyncMall from './mall/pages/async'
 import AsyncPerson from './person/pages/async'
+import Test from './test/test'
 import registerServiceWorker from './registerServiceWorker';
 import store, { history } from './reducers/store'
 import './index.css';
@@ -29,6 +30,12 @@ ReactDOM.render(
                     <Route
                         path="/person"
                         component={AsyncPerson}
+                    />
+                </MuiThemeProvider>
+                <MuiThemeProvider muiTheme={muitheme}>
+                    <Route
+                        path="/test"
+                        component={Test}
                     />
                 </MuiThemeProvider>
             </Commons>
